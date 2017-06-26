@@ -1,0 +1,38 @@
+body {
+  background:url(newimg.jpg);
+  background-repeat:no-repeat;
+  background-size:100%;
+}
+
+p {
+  text-align: center;
+  font-size: 7em;
+  margin: 200px 0 20px 0;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+
+p:nth-child(1) a {
+  font-size: 1.5em;
+  color: #A1DEF3;
+  font-family: Iceland;
+}
+
+p:nth-child(1) a:hover {
+  animation: neon2 1.5s ease-in-out infinite alternate;
+}
+p a:hover {
+  color: #ffffff;
+}
+@keyframes neon2 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+  }
+}
