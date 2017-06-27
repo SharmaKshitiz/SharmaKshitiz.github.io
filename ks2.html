@@ -83,6 +83,7 @@ opacity:0.6;
     text-align: center;
     font-size: 80px;
     box-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    background-color:white;
 }
 #tile1 p{
 margin-left =5px;
@@ -131,7 +132,7 @@ color:black;
     <div id="tile14"></div>
     <div id="tile15"></div>
 </div>
-<div id="restart" onclick="myFunction()">Restart</div>
+<div id="restart" onclick="restart()">Restart</div>
 </div>
 <div id="chances"><p>Chances : 0</p></div>
 <a href="ks1.html"><div id="level1"><p>Level : 1</p></div></a>
@@ -143,121 +144,110 @@ color:black;
 
 <script type="text/javascript">
 
-function initial()
-{
-    for(var i=0;i<16;i++)
-    {
-        document.getElementById('tile'+i).style.background="white";
-    }
-    
-}
-initial();
 document.getElementById('tile0').onclick=function(){
-               operate(0);
+               action(0);
 
 }
 document.getElementById('tile1').onclick=function(){
-               operate(1);
+               action(1);
 
 }
                
     
 
 document.getElementById('tile2').onclick=function(){
-               operate(2);
+               action(2);
     }   
 
 
 document.getElementById('tile3').onclick=function(){
-               operate(3);
+               action(3);
     }
 
 document.getElementById('tile4').onclick=function(){
-               operate(4);
+               action(4);
     }   
 
 document.getElementById('tile5').onclick=function(){
-               operate(5);
+               action(5);
     }
 
 document.getElementById('tile6').onclick=function(){
-               operate(6);
+               action(6);
     }
 
 document.getElementById('tile7').onclick=function(){
-               operate(7);
+               action(7);
     }
 
 document.getElementById('tile8').onclick=function(){
-               operate(8);
+               action(8);
     }
 
 document.getElementById('tile9').onclick=function(){
-               operate(9);
+               action(9);
     }
 
 document.getElementById('tile10').onclick=function(){
-               operate(10);
+               action(10);
     }   
 
 
 document.getElementById('tile11').onclick=function(){
-               operate(11);
+               action(11);
     }
 
 document.getElementById('tile12').onclick=function(){
-               operate(12);
+               action(12);
     }   
 
 document.getElementById('tile13').onclick=function(){
-               operate(13);
+               action(13);
     }
 
 document.getElementById('tile14').onclick=function(){
-               operate(14);
+               action(14);
     }
 
 document.getElementById('tile15').onclick=function(){
-               operate(15);
+               action(15);
     }
 
 var points=['A','B','C','D','E','F','G','H','A','B','C','D','E','F','G','H'];
 
-// Now we need to randomize the array
-myFunction();
-function myFunction() 
+window.onload=function myFunction() 
 {
    points.sort(function(a, b){return 0.5 - Math.random()});
 }
 
 var turn=0,true_turn=0;
-var count=0;
-var f1,f2,prv=-1;
-function operate(num)
+var c=0;
+var n1,n2,prv=-1;
+function action(num)
 { { if (points[num]!=1) 
-    if(!((count%2)==1&&num==prv))
+    if(!((c%2)==1&&num==prv))
     {
-        if (count!=2) 
+        if (c!=2) 
         {
-            if (count==0) 
+            if (c==0) 
             {
                 document.getElementById('tile'+num).innerHTML=points[num];
-                f1=points[num];
+                n1=points[num];
                 prv=num;
 
 
             }
-            if (count==1) 
+            if (c==1) 
             {
                 document.getElementById('tile'+num).innerHTML=points[num];
-                f2=points[num];
+                n2=points[num];
                 
             }
         }
-        count++;
-        if (count==2) 
+        c++;
+        if (c==2) 
         {   
-            if(f1==f2)
+            if(n1==n2)
             {   
                     points[num]='1';            
                     points[prv]='1';
@@ -272,13 +262,13 @@ function operate(num)
                     }
                 }
                 
-                if(f1!=f2)
+                if(n1!=n2)
                 {
                     setTimeout(function(){
                     document.getElementById('tile'+num).innerHTML="";
                     document.getElementById('tile'+prv).innerHTML="";},200);
                 }
-               count=0;
+               c=0;
                turn++;
                document.getElementById('chances').innerHTML="Chances : "+turn;
 
@@ -289,35 +279,8 @@ function operate(num)
 </script>
 
     <script type="text/javascript">
-        var minutesLabel = document.getElementById("minutes");
-        var secondsLabel = document.getElementById("seconds");
-        var hoursLabel = document.getElementById("hours");
-        var totalSeconds = 0;
-        setInterval(setTime, 1000);
 
-        function setTime()
-        {
-            ++totalSeconds;
-            secondsLabel.innerHTML = pad(totalSeconds%60);
-            minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
-            hourssLabel.innerHTML = pad(parseInt(totalSeconds/60));
-            if (true_turn==8) 
-                return;
-        }
-
-        function pad(val)
-        {
-            var valString = val + "";
-            if(valString.length < 2)
-            {
-                return "0" + valString;
-            }
-            else
-            {
-                return valString;
-            }
-        }
-function myFunction() {
+function restart() {
     location.reload();
 }
 
